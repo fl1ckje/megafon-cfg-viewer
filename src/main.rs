@@ -215,7 +215,7 @@ fn main() -> eframe::Result<()> {
         ..Default::default()
     };
     eframe::run_native(
-        "Megafon cfg viewer",
+        "Инспектор конфигурации РМ СКРС \"Мегафон\" v 0.1.0",
         options,
         Box::new(|_cc| Ok(Box::<AppState>::default())),
     )

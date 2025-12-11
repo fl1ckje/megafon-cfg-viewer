@@ -176,6 +176,15 @@ fn parse_radiostations(
     Ok(stations)
 }
 
+fn localize_panel_label(value: &str) -> String {
+    if let Some(rest) = value.strip_prefix(PANEL) {
+        if rest.parse::<usize>().is_ok() {
+            return format!("ПД {}", rest.strip_prefix("0").unwrap_or_default());
+        }
+    }
+    value.to_string()
+}
+
 fn parse_phone_panels(scanner: &mut LineScanner) -> Result<Vec<PhonePanel>, ConfigError> {
     let mut panels = Vec::new();
     while let Some(line) = scanner.peek_line() {
@@ -188,7 +197,7 @@ fn parse_phone_panels(scanner: &mut LineScanner) -> Result<Vec<PhonePanel>, Conf
             if panel_id.starts_with(PANEL) {
                 scanner.next_line();
                 let mut panel = PhonePanel {
-                    id: panel_id.to_string(),
+                    id: localize_panel_label(panel_id),
                     buttons: vec![],
                 };
 

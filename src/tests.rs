@@ -95,7 +95,7 @@ fn test_parse_screen_phone_panels() {
 
     // Panel 01
     let p1 = &config.phone_panels[0];
-    assert_eq!(p1.id, "Panel01");
+    assert_eq!(p1.id, "ПД 1");
     assert_eq!(p1.buttons.len(), 2);
 
     let p1_b1 = &p1.buttons[0];
@@ -106,7 +106,7 @@ fn test_parse_screen_phone_panels() {
 
     // Panel 02
     let p2 = &config.phone_panels[1];
-    assert_eq!(p2.id, "Panel02");
+    assert_eq!(p2.id, "ПД 2");
     assert_eq!(p2.buttons.len(), 1);
     assert_eq!(p2.buttons[0].text, "Диспетчер ПИВП вне ВТ");
 }
